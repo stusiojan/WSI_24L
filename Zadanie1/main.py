@@ -13,7 +13,7 @@ rastrigin = RastriginFunction()
 beta_parameters = [0.66, 0.3, 0.1, 0.01, 0.001, 0.0001]
 ## x0 = [a, b]
 a = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
-b = 12
+b = 2
 
 def plot_vectors(ax, results, function):
     for result in results:
