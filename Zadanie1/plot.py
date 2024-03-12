@@ -24,11 +24,11 @@ def visualize(f: callable, trajectory: np.array, i: int, beta, name: str):
     plt.colorbar(label=f'{name} Function Value')
     plt.xlabel('a')
     plt.ylabel('b')
-    plt.title(f'{name} Function')
+    plt.title(f'{name} Function with parameters: beta={beta} and x0=[{i}_2]')
 
     plt.scatter(min_x, min_y, color='yellow', label='Found Minimum', zorder=1)
     plt.plot(trajectory[:, 0], trajectory[:, 1], marker='o', color='red', label='Gradient Descent Steps', alpha=0.5)
 
     plt.legend()
-    plt.savefig(f'Zadanie1/results3D/{name}_beta-{beta}_x0-{i}_12.png')
+    plt.savefig(f'Zadanie1/results/{name}_beta-{beta}_x0-{i}_2.png')
     plt.close()
