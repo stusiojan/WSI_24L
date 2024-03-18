@@ -26,6 +26,7 @@ dla zakresu $x \in [-5,12;5,12]^2, x \in R^2$
 $$
 f(x) = 10d + \sum_{i=1}^{d} \left( x_i^2 - 10 \cos(2 \pi x_i) \right)
 $$
+
 2. Griewanka(https://www.sfu.ca/~ssurjano/griewank.html),
 
 dla zakresu $x \in [-50, 50]^2, x \in R^2$
@@ -46,21 +47,19 @@ $$
 
 \section{Implementacja}
 
-1. $x \leftarrow x_0$.\quad \quad  \quad \quad \quad \quad \quad \quad Wybór punktu startowego $x_0$
 
-2. for $i$ in $max$ \quad \quad \quad \quad \quad \quad $max$ - maksymalna liczba iteracji
+Rozważam tylko wymiar $d = 2$, zatem analizowane funkcje można uprościć:
 
-3. $d \leftarrow -\bigtriangledown g(x)$.\quad \quad \quad \quad \quad  Obliczenie kierunku poszukiwań
+Rastrigin
 
-4. $x \leftarrow x + \beta * d$ \quad \quad \quad \quad \quad  $\beta$ - krok
-\\\\
-Rozważam tylko wymiar $d = 2$, zatem analizowane funkcje można uprościć:\\
-Rastrigin\\
-$$f(x) = 20 + x_1^2 - 10 \cos(2 \pi x_1) + x_2^2 - 10 \cos(2 \pi x_2)
 $$
-\\\\
-Griewank\\
-$$f(x) =\frac{1}{4000} (x_1^2 + x_2^2) - \cos\left(x_1\right) \cos\left(\frac{x_2}{\sqrt{2}}\right) + 1
+f(x) = 20 + x_1^2 - 10 \cos(2 \pi x_1) + x_2^2 - 10 \cos(2 \pi x_2)
+$$
+
+Griewank
+
+$$
+f(x) =\frac{1}{4000} (x_1^2 + x_2^2) - \cos\left(x_1\right) \cos\left(\frac{x_2}{\sqrt{2}}\right) + 1
 $$
 
 \section{Badane parametry}
