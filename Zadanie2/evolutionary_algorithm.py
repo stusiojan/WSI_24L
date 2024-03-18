@@ -1,25 +1,28 @@
 import numpy as np
 
 class EvolutionaryAlgorithm:
-    # Na podstawie wykładu algorytm ewolucyjny powinien zawierać:
-    # - funkcję celu
-    # - długość chromosomu
-    # - rozmiar populacji
-    # - maksymalną liczbę generacji (pokoleń)
-    # - prawdopodobieństwo krzyżowania
-    # - prawdopodobieństwo mutacji
-    def __init__(self, function, chromosome_length=2, population_size=100, max_generations=1000, crossover_probability=0.8, mutation_probability=0.1):
-        self.function = function
-        self.chromosome_length = chromosome_length
-        self.population_size = population_size
-        self.max_generations = max_generations
-        self.crossover_probability = crossover_probability
-        self.mutation_probability = mutation_probability
+    '''
+    Na podstawie wykładu algorytm ewolucyjny powinien zawierać:
+    g(x) - funkcję celu
+    P_0 - populację początkową
+    L - długość chromosomu
+    mu - rozmiar populacji
+    sigma - odchylenie standardowe
+    p_m - prawdopodobieństwo mutacji
+    p_c - prawdopodobieństwo krzyżowania
+    t_max- maksymalną liczbę generacji (pokoleń)
+    '''
+    def __init__(self, gain_function, L, mu, sigma, p_m, p_c, t_max):
+        self.function = gain_function
+        self.chromosome_length = L
+        self.population_size = mu
+        self.sigma = sigma
+        self.mutation_probability = p_m
+        self.crossover_probability = p_c
+        self.max_generations = t_max
 
-    # główne metody algorytmu ewolucyjnego:
-    def fitness(self, x, function):
-        # return value of evaluation function
-        return self.function.forward(x)
+    def fitness_function(self, x, function):
+        return self.function(x)
 
     def mutation_operator(self, x, p):
         # return from propability p a new chromosome(x[0], x[1]) for mutation
@@ -28,11 +31,62 @@ class EvolutionaryAlgorithm:
 
     def crossover_operator(self, x1, x2, p):
         # return from propability p two chromosomes for crossover and crossover probability
+        # return punkt pośredni między x1 a x2
         # jak wyznaczyć prawdopodobieństwo krzyżowania?
         # losowo wybrany inny osobnik z populacji, ale to w algorytmie
         return x1, x2
 
-    # metody pomocnicze
-    def initalize_population(self, population_size):
-        # return n random chromosomes or return n from domain
-        return np.random.rand(population_size, self.chromosome_length)
+
+    def initalize_population(self, population_size, chromosome_length):
+        p_0 = np.random.rand(self.population_size, self.chromosome_length)
+        return p_0
+
+    def select_parents(self, population, fitness):
+        parents = []
+        for i in range(2):
+            parents.append(population[np.argmin(fitness)])
+            fitness[np.argmin(fitness)] = 999999999999999999
+        return parents
+
+    def survivor_selection(self, population, fitness):
+        survivors = []
+        for i in range(self.population_size):
+            survivors.append(population[np.argmin(fitness)])
+            fitness[np.argmin(fitness)] = 999999999999999999
+        return survivors
+
+
+    def run(self):
+        '''
+        1.  Initialize population
+        2.  Evaluate each individual (fitness function)
+        3.  Repeat until termination condition is met or max generations is reached:
+            a.  Select parents
+            b.  Crossover
+            c.  Mutate
+            d.  Evaluate each individual
+            e.  Select survivors
+        '''
+        # 1st step
+        population = self.initalize_population(self.population_size, self.chromosome_length)
+        print('Initial population: ')
+        print(population)
+
+        # 2nd step
+        fitness = []
+        for individual in population:
+            fitness.append(self.fitness_function(individual, self.function))
+        print('Initial population fitness: ')
+        print(fitness)
+        
+        # 3rd step
+        for generation in range(self.max_generations):
+            parents = self.select_parents(population, fitness) # wybieram tylko 2 rodziców
+            population = np.append( population, (self.crossover_operator(parents[0], parents[1], self.crossover_probability)))
+            population = np.append( population, (self.mutation_operator(population[np.argmin(fitness)], self.mutation_probability))) # jak wybrać osobnika do mutacji?
+            # populacja rosnie z x do x+2
+            for individual in population:
+                self.fitness_function(individual, self.function)
+            population = self.survivor_selection(population, fitness)
+        
+        return self.population

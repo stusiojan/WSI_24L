@@ -12,9 +12,3 @@ class GriewankFunction:
         product = np.cos(x[0]) * np.cos(x[1] / np.sqrt(1))
         
         return 1 + sum - product
-
-    def backward(self, x):
-        grad = np.zeros_like(x) # np.array([0, 0])
-        grad[0] = x[0] / 2000 - np.sin(x[0]) * np.cos(x[1] / np.sqrt(2))
-        grad[1] = x[1] / 2000 - np.cos(x[0]) * np.sin(x[1] / np.sqrt(2)) / np.sqrt(2)
-        return grad
