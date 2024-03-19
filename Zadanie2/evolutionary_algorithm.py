@@ -22,6 +22,7 @@ class EvolutionaryAlgorithm:
         self.max_generations = t_max
 
     def fitness_function(self, x, function):
+        # odleglosc od optimum
         return self.function(x)
 
     def mutation_operator(self, x: np.ndarray, p):
@@ -34,6 +35,7 @@ class EvolutionaryAlgorithm:
 
     def crossover_operator(self, x1: np.ndarray, x2: np.ndarray, p):
         # krzyżowanie jednopunktowe
+        # srednia wazona
         if np.random.rand() < p:
             crossover_point = np.random.randint(0, self.chromosome_length)  # czy hardcodować 1?
             for i in range(crossover_point, self.chromosome_length):
@@ -46,19 +48,19 @@ class EvolutionaryAlgorithm:
         return p_0
 
     def select_parents(self, population, fitness):
-        # turniejowa selekcja rodziców
         parents = []
-        for i in range(2):
+        for i in range(len(population) - 1):
             parents.append(population[np.argmin(fitness)])
             fitness[np.argmin(fitness)] = 999999999999999999
         return parents
 
     def survivor_selection(self, population, fitness):
         # turniejowa reprodukcja
-        survivors = []
-        for i in range(self.population_size):
-            survivors.append(population[np.argmin(fitness)])
+        survivors = np.array([])
+        for i in range(self.population_size): #-1
+            survivors = np.append(survivors, population[np.argmin(fitness)], axis=0)
             fitness[np.argmin(fitness)] = 999999999999999999
+        survivors = survivors.reshape(self.population_size, self.chromosome_length)
         return survivors
 
 
@@ -83,29 +85,28 @@ class EvolutionaryAlgorithm:
         
         # 3rd step
         for generation in range(self.max_generations):
-            parents = self.select_parents(population, fitness)    # wybieram tylko 2 rodziców
+            fitness = []
+            for individual in population:
+                fitness.append(self.fitness_function(individual, self.function))
+            print('generation', generation)
+            parents = self.select_parents(population, fitness)
 
             successors = self.crossover_operator(parents[0], parents[1], self.crossover_probability)
             population = np.append( population, successors, axis=0)
 
-            mutants = self.mutation_operator(population[np.argmin(fitness)], self.mutation_probability)
-            population = np.append( population, mutants, axis=0)    # jak wybrać osobnika do mutacji?
+            mutants = np.array([])
+            for i in range(len(parents)):
+                mutant = self.mutation_operator(parents[i], self.mutation_probability,)
+                mutants = np.append(mutants, mutant, axis=0)
+            mutants = mutants.reshape(len(parents), self.chromosome_length)
+            population = np.append(population, mutants, axis=0)
 
             fitness = []
             for individual in population:
-                print(individual)
                 fitness.append(self.fitness_function(individual, self.function))
             population = self.survivor_selection(population, fitness)
 
-            # parents = self.select_parents(population, fitness)
-
-            # successors = self.crossover_operator(parents[0].copy(), parents[1].copy(), self.crossover_probability)
-            # population = np.vstack([population, np.array([successors[0]]), np.array([successors[1]])])
-
-            # mutant = self.mutation_operator(population[np.argmin(fitness)].copy(), self.mutation_probability)
-            # population = np.vstack([population, np.array([mutant])])
-
-            # fitness = [self.fitness_function(individual, self.function) for individual in population]
-            # population = self.survivor_selection(population, fitness)
+            parents = np.array([])
+            print('end')
         
-        return self.population
+        return population

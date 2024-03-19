@@ -4,6 +4,7 @@ from drop_wave_function import DropWaveFunction
 from evolutionary_algorithm import EvolutionaryAlgorithm
 from griewank_function import GriewankFunction
 from rastrigin_function import RastriginFunction
+from plot import visualize
 
 # init functions
 drop_wave_function = DropWaveFunction().forward
