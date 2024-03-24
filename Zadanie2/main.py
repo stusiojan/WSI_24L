@@ -26,14 +26,14 @@ griewank_evolutionary_algorithm = EvolutionaryAlgorithm(griewank_function, 2, 20
 rastrigin_evolutionary_algorithm = EvolutionaryAlgorithm(rastrigin_function, 2, 20, 0.1, 0.2, 8.1, 100)
 
 # run evolutionary algorithms
-drop_wave_best_population = drop_wave_function_evolutionary_algorithm.run()
-griewank_best_population = griewank_evolutionary_algorithm.run()
-rastrigin_best_population = rastrigin_evolutionary_algorithm.run()
+drop_wave_best_populations = drop_wave_function_evolutionary_algorithm.run()
+griewank_best_populations = griewank_evolutionary_algorithm.run()
+rastrigin_best_populations = rastrigin_evolutionary_algorithm.run()
 
 # visualize results
-visualize(drop_wave_function, drop_wave_best_population, "Drop Wave Function")
-visualize(griewank_function, griewank_best_population, "Griewank Function")
-visualize(rastrigin_function, rastrigin_best_population, "Rastrigin Function")
+visualize(drop_wave_function, drop_wave_best_populations, "Drop Wave Function")
+visualize(griewank_function, griewank_best_populations, "Griewank Function")
+visualize(rastrigin_function, rastrigin_best_populations, "Rastrigin Function")
 
 if __name__ == "__main__":
     pass

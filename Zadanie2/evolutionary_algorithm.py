@@ -65,6 +65,7 @@ class EvolutionaryAlgorithm:
 
 
     def run(self):
+        generations = []
         '''
         1.  Initialize population
         2.  Evaluate each individual (fitness function)
@@ -107,6 +108,7 @@ class EvolutionaryAlgorithm:
             population = self.survivor_selection(population, fitness)
 
             parents = np.array([])
+            generations.append(population)
             print('end')
         
-        return population
+        return generations
