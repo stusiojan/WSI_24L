@@ -27,9 +27,8 @@ class EvolutionaryAlgorithm:
 
     def mutation_operator(self, x: np.ndarray, p):
         # mutacja gaussowska
-        # jeśli prawdopodobieństwo mutacji jest mniejsze niż p to ??
         # x = x + sigma * N(0, 1)
-        if np.random.rand() < p: # to nie jest losowe do końca
+        if np.random.rand() < p:
             x = x + np.random.normal(0, self.sigma, self.chromosome_length)
         return x
 
@@ -37,9 +36,13 @@ class EvolutionaryAlgorithm:
         # krzyżowanie jednopunktowe
         # srednia wazona
         if np.random.rand() < p:
-            crossover_point = np.random.randint(0, self.chromosome_length)  # czy hardcodować 1?
-            for i in range(crossover_point, self.chromosome_length):
-                x1[i], x2[i] = x2[i], x1[i]
+            # crossover_point = np.random.randint(0, self.chromosome_length)  # czy hardcodować 1?
+            # for i in range(crossover_point, self.chromosome_length):
+            #     x1[i], x2[i] = x2[i], x1[i]
+            x1[0] = (x1[0] + x2[0]) / 2
+            x2[0] = (x1[1] + x2[1]) / 2
+            x1[1] = (x1[1] + x2[1]) / 2
+            x2[1] = (x1[0] + x2[0]) / 2
         return x1, x2
 
 
@@ -49,7 +52,7 @@ class EvolutionaryAlgorithm:
 
     def select_parents(self, population, fitness):
         parents = []
-        for i in range(len(population) - 1):
+        for i in range(len(population)):
             parents.append(population[np.argmin(fitness)])
             fitness[np.argmin(fitness)] = 999999999999999999
         return parents
@@ -57,7 +60,7 @@ class EvolutionaryAlgorithm:
     def survivor_selection(self, population, fitness):
         # turniejowa reprodukcja
         survivors = np.array([])
-        for i in range(self.population_size): #-1
+        for i in range(self.population_size):
             survivors = np.append(survivors, population[np.argmin(fitness)], axis=0)
             fitness[np.argmin(fitness)] = 999999999999999999
         survivors = survivors.reshape(self.population_size, self.chromosome_length)
@@ -89,10 +92,10 @@ class EvolutionaryAlgorithm:
             fitness = []
             for individual in population:
                 fitness.append(self.fitness_function(individual, self.function))
-            print('generation', generation)
             parents = self.select_parents(population, fitness)
 
-            successors = self.crossover_operator(parents[0], parents[1], self.crossover_probability)
+            for i in range(len(parents)):
+                successors = self.crossover_operator(parents[i], parents[len(parents)-i-1], self.crossover_probability)
             population = np.append( population, successors, axis=0)
 
             mutants = np.array([])
@@ -109,6 +112,5 @@ class EvolutionaryAlgorithm:
 
             parents = np.array([])
             generations.append(population)
-            print('end')
         
         return generations
