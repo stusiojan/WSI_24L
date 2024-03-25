@@ -58,7 +58,6 @@ class EvolutionaryAlgorithm:
         return parents
 
     def survivor_selection(self, population, fitness):
-        # turniejowa reprodukcja
         survivors = np.array([])
         for i in range(self.population_size):
             survivors = np.append(survivors, population[np.argmin(fitness)], axis=0)
