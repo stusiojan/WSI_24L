@@ -46,10 +46,12 @@ def AlfaBeta(s,d,α,β) :
 '''
 
 import numpy as np
+import time
 
 class MinMax:
     def __init__(self, game):
         self.game = game
+        self.nodes_visited = 0
     
     def evaluate_game(self, state: np.ndarray, depth: int) -> int:
         if self.game.check_win(1):
@@ -59,7 +61,25 @@ class MinMax:
         else:
             return 0
     
-    def minmax(self, state: np.ndarray, depth: int, maximizing: bool) -> tuple:
+    def minmax_measure(
+        self, 
+        state, 
+        depth, 
+        maximizing
+        ):
+        start_time = time.time()
+        self.nodes_visited = 0
+        result = self.minmax(state, depth, maximizing)
+        execution_time = time.time() - start_time
+        return result + (self.nodes_visited, execution_time)
+
+    def minmax(
+        self, 
+        state: np.ndarray, 
+        depth: int, 
+        maximizing: bool
+        ) -> tuple:
+        self.nodes_visited += 1
         if self.game.check_win(1) or self.game.check_win(-1) or self.game.is_draw():
             return self.evaluate_game(state, depth), None
         
@@ -86,7 +106,29 @@ class MinMax:
                     best_move = move
             return minEval, best_move
     
-    def alpha_pruning(self, state: np.ndarray, depth: int, maximizing: bool, alpha: int, beta: int) -> tuple:
+    def alpha_pruning_measure(
+        self, 
+        state, 
+        depth, 
+        maximizing, 
+        alpha, 
+        beta
+        ):
+        start_time = time.time()
+        self.nodes_visited = 0
+        result = self.alpha_pruning(state, depth, maximizing, alpha, beta)
+        execution_time = time.time() - start_time
+        return result + (self.nodes_visited, execution_time)
+
+    def alpha_pruning(
+        self, 
+        state: np.ndarray,
+        depth: int, 
+        maximizing: bool,
+        alpha: int,
+        beta: int
+        ) -> tuple:
+        self.nodes_visited += 1
         if self.game.check_win(1) or self.game.check_win(-1) or self.game.is_draw():
             return self.evaluate_game(state, depth), None
         

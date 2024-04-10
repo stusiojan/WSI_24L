@@ -1,45 +1,101 @@
-import numpy as np
-import time
-import matplotlib.pyplot as plt
+from tic_tac_toe import TicTacToe
 from min_max import MinMax
+import numpy as np
+import matplotlib.pyplot as plt
+import itertools
 
-def simulate_game_progression():
-    """Symuluje progresję gry, zwracając listę stanów gry."""
-    game_progression = []
-    current_state = np.zeros((3, 3), dtype=int)
-    moves = [(0, 0), (1, 1), (0, 1), (1, 0), (0, 2), (2, 2), (1, 2), (2, 1), (2, 0)]
-    for i, move in enumerate(moves):
-        current_state[move] = 1 if i % 2 == 0 else -1
-        game_progression.append(np.copy(current_state))
-    return game_progression
 
-def measure_execution_time(states, use_alpha_beta=False):
-    """Mierzy czas wykonania algorytmu dla każdego stanu."""
-    times = []
-    minmax = MinMax()
-    for state in states:
-        start_time = time.time()
-        if use_alpha_beta:
-            minmax.alpha_pruning(state, (0, 0), True, -np.inf, np.inf, 9)
-        else:
-            minmax.minmax(state, (0, 0), True, 9)
-        end_time = time.time()
-        times.append(end_time - start_time)
-    return times
+mid_game_states = [
+    np.array([[1, -1, 0], [0, 1, 0], [-1, 0, 0]]),
+    np.array([[1, 0, -1], [-1, 1, 0], [0, 0, 1]]),
+    np.array([[0, -1, 1], [-1, 1, 0], [1, 0, 0]])
+]
+
+def simulate_moves(game, moves):
+    """
+    Simulate a sequence of moves in the TicTacToe game to reach a certain game state.
+    Moves are a list of tuples [(player1_move, player2_move), ...].
+    """
+    for move in moves:
+        game.make_move(move, 1)
+        if not game.is_draw() and not game.check_win(1):
+            game.make_move(move, -1)
+
+def run_experiment(game, ai, state, use_alpha_pruning):
+    """
+    Set the game state and run a single experiment, then measure the execution time and nodes visited.
+    """
+    game.board = state.copy()
+    if use_alpha_pruning:
+        _, _, nodes_visited, execution_time = ai.alpha_pruning_measure(game.board, 0, True, float('-inf'), float('inf'))
+    else:
+        _, _, nodes_visited, execution_time = ai.minmax_measure(game.board, 0, True)
+    
+    print(f"{'Alpha-Beta' if use_alpha_pruning else 'MinMax'} - Nodes Visited: {nodes_visited}, Execution Time: {execution_time:.5f}s")
+    return nodes_visited, execution_time
+
+def run_experiment_time(game, ai, use_alpha_pruning):
+    """
+    Run a single experiment and measure the execution time of the MinMax or Alpha-Beta algorithm.
+    """
+    if use_alpha_pruning:
+        _, _, nodes_visited, execution_time = ai.alpha_pruning_measure(game.board, 0, True, float('-inf'), float('inf'))
+    else:
+        _, _, nodes_visited, execution_time = ai.minmax_measure(game.board, 0, True)
+    
+    print(f"{'Alpha-Beta' if use_alpha_pruning else 'MinMax'} - Nodes Visited: {nodes_visited}, Execution Time: {execution_time:.5f}s")
+    return execution_time
 
 def main():
-    states = simulate_game_progression()
-    times_minmax = measure_execution_time(states, use_alpha_beta=False)
-    times_alpha_beta = measure_execution_time(states, use_alpha_beta=True)
+    game = TicTacToe()
+    ai = MinMax(game)
 
-    moves = list(range(1, len(states) + 1))
-    plt.plot(moves, times_minmax, label='Minmax', marker='o')
-    plt.plot(moves, times_alpha_beta, label='Alpha-Beta', marker='x')
-    plt.xlabel('Move number')
-    plt.ylabel('Execution time (s)')
-    plt.title('Execution Time Comparison')
+    available_moves = list(itertools.product(range(3), repeat=2))
+
+    times_minmax = []
+    times_alpha_beta = []
+
+    initial_states = [np.zeros((3, 3)) for _ in range(9)]
+    for i, (row, col) in enumerate([(row, col) for row in range(3) for col in range(3)]):
+        initial_states[i][row, col] = 1
+
+    all_states = initial_states + mid_game_states
+
+    execution_times_minmax, execution_times_alpha_beta = [], []
+    nodes_visited_minmax, nodes_visited_alpha_beta = [], []
+
+    for state in all_states:
+        nodes_minmax, time_minmax = run_experiment(game, ai, state, use_alpha_pruning=False)
+        execution_times_minmax.append(time_minmax)
+        nodes_visited_minmax.append(nodes_minmax)
+
+        nodes_alpha_beta, time_alpha_beta = run_experiment(game, ai, state, use_alpha_pruning=True)
+        execution_times_alpha_beta.append(time_alpha_beta)
+        nodes_visited_alpha_beta.append(nodes_alpha_beta)
+
+    for move_number in range(1, len(available_moves) + 1):
+        game.board = np.zeros((3, 3), dtype=int)
+        simulate_moves(game, available_moves[:move_number])
+
+        time_minmax = run_experiment_time(game, ai, use_alpha_pruning=False)
+        times_minmax.append(time_minmax)
+
+        game.board = np.zeros((3, 3), dtype=int)
+        simulate_moves(game, available_moves[:move_number])
+
+        time_alpha_beta = run_experiment_time(game, ai, use_alpha_pruning=True)
+        times_alpha_beta.append(time_alpha_beta)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, len(available_moves) + 1), times_minmax, label='MinMax', marker='o')
+    plt.plot(range(1, len(available_moves) + 1), times_alpha_beta, label='Alpha-Beta', marker='x')
+    plt.xlabel('Move Number')
+    plt.ylabel('Execution Time (s)')
+    plt.title('Execution Time by Move Number')
     plt.legend()
-    plt.savefig('execution_time_comparison2.png')
+    plt.grid(True)
+    plt.savefig('execution_time.png')
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()
