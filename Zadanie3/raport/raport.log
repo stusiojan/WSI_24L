@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.13)  9 APR 2024 10:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.13)  15 APR 2024 22:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/jan/sourcetree/Githubhttps:/WSI_24L/Zadanie3/raport/raport.tex
-(/Users/jan/sourcetree/Githubhttps:/WSI_24L/Zadanie3/raport/raport.tex
+**/Volumes/Dock/Git/WSI_24L/Zadanie3/raport/raport.tex
+(/Volumes/Dock/Git/WSI_24L/Zadanie3/raport/raport.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -157,137 +157,68 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 14.
-<Screenshot 2024-04-07 at 22.18.07.png, id=1, 1760.5775pt x 825.0825pt>
-File: Screenshot 2024-04-07 at 22.18.07.png Graphic file (type png)
-<use Screenshot 2024-04-07 at 22.18.07.png>
-Package pdftex.def Info: Screenshot 2024-04-07 at 22.18.07.png  used on input line 25.
-(pdftex.def)             Requested size: 512.13939pt x 227.6223pt.
 
-Overfull \hbox (11.6554pt too wide) in paragraph at lines 25--26
-[][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
+<Screenshot 2024-04-15 at 21.58.35.png, id=1, 333.245pt x 1294.8375pt>
+File: Screenshot 2024-04-15 at 21.58.35.png Graphic file (type png)
+<use Screenshot 2024-04-15 at 21.58.35.png>
+Package pdftex.def Info: Screenshot 2024-04-15 at 21.58.35.png  used on input line 29.
+(pdftex.def)             Requested size: 113.81029pt x 284.52925pt.
+<Screenshot 2024-04-15 at 21.58.19.png, id=3, 331.2375pt x 1351.0475pt>
+File: Screenshot 2024-04-15 at 21.58.19.png Graphic file (type png)
+<use Screenshot 2024-04-15 at 21.58.19.png>
+Package pdftex.def Info: Screenshot 2024-04-15 at 21.58.19.png  used on input line 30.
+(pdftex.def)             Requested size: 113.807pt x 284.51173pt.
 [1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./Screenshot 2024-04-07 at 22.18.07.png>]
-<midgamestate1.png, id=13, 101.178pt x 101.178pt>
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./Screenshot 2024-04-15 at 21.58.35.png> <./Screenshot 2024-04-15 at 21.58.19.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+<midgamestate1.png, id=16, 101.178pt x 101.178pt>
 File: midgamestate1.png Graphic file (type png)
 <use midgamestate1.png>
-Package pdftex.def Info: midgamestate1.png  used on input line 48.
+Package pdftex.def Info: midgamestate1.png  used on input line 56.
 (pdftex.def)             Requested size: 142.27191pt x 142.27191pt.
-<midgamestate2.png, id=14, 101.178pt x 101.178pt>
+<midgamestate2.png, id=17, 101.178pt x 101.178pt>
 File: midgamestate2.png Graphic file (type png)
 <use midgamestate2.png>
-Package pdftex.def Info: midgamestate2.png  used on input line 49.
+Package pdftex.def Info: midgamestate2.png  used on input line 57.
 (pdftex.def)             Requested size: 142.27191pt x 142.27191pt.
-<midgamestate3.png, id=15, 101.178pt x 101.178pt>
+<midgamestate3.png, id=18, 101.178pt x 101.178pt>
 File: midgamestate3.png Graphic file (type png)
 <use midgamestate3.png>
-Package pdftex.def Info: midgamestate3.png  used on input line 50.
+Package pdftex.def Info: midgamestate3.png  used on input line 58.
 (pdftex.def)             Requested size: 142.27191pt x 142.27191pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
+Underfull \hbox (badness 10000) in paragraph at lines 56--102
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 97.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 97.
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--98
-
- []
-
-
-Overfull \hbox (502.70566pt too wide) in paragraph at lines 52--100
-[][] [] 
- []
-
-<execution_time_comparison2.png, id=16, 462.528pt x 346.896pt>
-File: execution_time_comparison2.png Graphic file (type png)
-<use execution_time_comparison2.png>
-Package pdftex.def Info: execution_time_comparison2.png  used on input line 103.
-(pdftex.def)             Requested size: 219.08907pt x 170.71628pt.
-[2 <./midgamestate1.png> <./midgamestate2.png> <./midgamestate3.png>] [3 <./execution_time_comparison2.png>] (./raport.aux) ) 
+[2 <./midgamestate1.png> <./midgamestate2.png> <./midgamestate3.png>]
+<execution_time.png, id=23, 722.7pt x 433.62pt>
+File: execution_time.png Graphic file (type png)
+<use execution_time.png>
+Package pdftex.def Info: execution_time.png  used on input line 105.
+(pdftex.def)             Requested size: 219.08333pt x 170.71892pt.
+ [3 <./execution_time.png>] (./raport.aux) ) 
 Here is how much of TeX's memory you used:
- 2901 strings out of 476025
- 46273 string characters out of 5790017
- 1856388 words of memory out of 5000000
- 23343 multiletter control sequences out of 15000+600000
+ 2906 strings out of 476025
+ 46402 string characters out of 5790017
+ 1858388 words of memory out of 5000000
+ 23347 multiletter control sequences out of 15000+600000
  520413 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,62p,558b,190s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on raport.pdf (3 pages, 203412 bytes).
+ 57i,6n,62p,541b,190s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on raport.pdf (3 pages, 212634 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

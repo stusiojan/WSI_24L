@@ -12,19 +12,12 @@ mid_game_states = [
 ]
 
 def simulate_moves(game, moves):
-    """
-    Simulate a sequence of moves in the TicTacToe game to reach a certain game state.
-    Moves are a list of tuples [(player1_move, player2_move), ...].
-    """
     for move in moves:
         game.make_move(move, 1)
         if not game.is_draw() and not game.check_win(1):
             game.make_move(move, -1)
 
 def run_experiment(game, ai, state, use_alpha_pruning):
-    """
-    Set the game state and run a single experiment, then measure the execution time and nodes visited.
-    """
     game.board = state.copy()
     if use_alpha_pruning:
         _, _, nodes_visited, execution_time = ai.alpha_pruning_measure(game.board, 0, True, float('-inf'), float('inf'))
@@ -35,9 +28,6 @@ def run_experiment(game, ai, state, use_alpha_pruning):
     return nodes_visited, execution_time
 
 def run_experiment_time(game, ai, use_alpha_pruning):
-    """
-    Run a single experiment and measure the execution time of the MinMax or Alpha-Beta algorithm.
-    """
     if use_alpha_pruning:
         _, _, nodes_visited, execution_time = ai.alpha_pruning_measure(game.board, 0, True, float('-inf'), float('inf'))
     else:
