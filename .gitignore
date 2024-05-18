@@ -1,0 +1,7 @@
+# Ignore all files with 'raport' in their names except 'raport.tex' and 'raport.pdf'
+raport.*
+!raport.tex
+!raport.pdf
+
+# Ignore all .zip files
+*.zip
