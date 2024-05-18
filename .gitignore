@@ -5,3 +5,6 @@ raport.*
 
 # Ignore all .zip files
 *.zip
+
+# Ignore venv directory
+Zadanie5/zadanie5env/
