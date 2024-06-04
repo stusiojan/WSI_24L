@@ -37,7 +37,7 @@ Przeprowadzono eksperymenty mające na celu zbadanie wpływu parametrów $\alpha
 \subsection{Wpływ parametru $\alpha$}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{alpha_impact.png}
+    % \includegraphics[width=\textwidth]{alpha_impact.png}
     \caption{Wpływ parametru $\alpha$ na zbieżność algorytmu Q-Learning}
     \label{fig:alpha_impact}
 \end{figure}
@@ -62,7 +62,7 @@ Przeprowadzono eksperymenty mające na celu zbadanie wpływu parametrów $\alpha
 \subsection{Wpływ parametru $\gamma$}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{gamma_impact.png}
+    % \includegraphics[width=\textwidth]{gamma_impact.png}
     \caption{Wpływ parametru $\gamma$ na zbieżność algorytmu Q-Learning}
     \label{fig:gamma_impact}
 \end{figure}
@@ -87,7 +87,7 @@ Przeprowadzono eksperymenty mające na celu zbadanie wpływu parametrów $\alpha
 \subsection{Wpływ parametru $\epsilon$}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{epsilon_impact.png}
+    % \includegraphics[width=\textwidth]{epsilon_impact.png}
     \caption{Wpływ parametru $\epsilon$ na zbieżność algorytmu Q-Learning}
     \label{fig:epsilon_impact}
 \end{figure}
@@ -108,6 +108,55 @@ Przeprowadzono eksperymenty mające na celu zbadanie wpływu parametrów $\alpha
         \bottomrule
     \end{tabular}
 \end{table}
+
+Parameter  Value  Mean Reward  Std Reward  Success Count
+0      alpha   0.10         0.00        0.00              0
+1      alpha   0.30         0.00        0.00              0
+2      alpha   0.50         0.02        0.06              1
+3      alpha   0.70         0.00        0.00              0
+4      alpha   0.90         0.00        0.00              0
+5      gamma   0.50         0.00        0.00              0
+6      gamma   0.70         0.00        0.00              0
+7      gamma   0.90         0.00        0.00              0
+8      gamma   0.95         0.00        0.00              0
+9      gamma   0.99         0.00        0.00              0
+10   epsilon   0.01         0.00        0.00              0
+11   epsilon   0.05         0.00        0.00              0
+12   epsilon   0.10         0.00        0.00              0
+13   epsilon   0.20         0.00        0.00              0
+14   epsilon   0.30         0.00        0.00              0
+15         T   0.50         0.00        0.00              0
+16         T   1.00         0.00        0.00              0
+17         T   2.00         0.00        0.00              0
+18         T   5.00         0.00        0.00              0
+19         T  10.00         0.00        0.00              0
+\begin{tabular}{lrrrr}
+\toprule
+Parameter & Value & Mean Reward & Std Reward & Success Count \\
+\midrule
+alpha & 0.100000 & 0.000000 & 0.000000 & 0 \\
+alpha & 0.300000 & 0.000000 & 0.000000 & 0 \\
+alpha & 0.500000 & 0.020000 & 0.060000 & 1 \\
+alpha & 0.700000 & 0.000000 & 0.000000 & 0 \\
+alpha & 0.900000 & 0.000000 & 0.000000 & 0 \\
+gamma & 0.500000 & 0.000000 & 0.000000 & 0 \\
+gamma & 0.700000 & 0.000000 & 0.000000 & 0 \\
+gamma & 0.900000 & 0.000000 & 0.000000 & 0 \\
+gamma & 0.950000 & 0.000000 & 0.000000 & 0 \\
+gamma & 0.990000 & 0.000000 & 0.000000 & 0 \\
+epsilon & 0.010000 & 0.000000 & 0.000000 & 0 \\
+epsilon & 0.050000 & 0.000000 & 0.000000 & 0 \\
+epsilon & 0.100000 & 0.000000 & 0.000000 & 0 \\
+epsilon & 0.200000 & 0.000000 & 0.000000 & 0 \\
+epsilon & 0.300000 & 0.000000 & 0.000000 & 0 \\
+T & 0.500000 & 0.000000 & 0.000000 & 0 \\
+T & 1.000000 & 0.000000 & 0.000000 & 0 \\
+T & 2.000000 & 0.000000 & 0.000000 & 0 \\
+T & 5.000000 & 0.000000 & 0.000000 & 0 \\
+T & 10.000000 & 0.000000 & 0.000000 & 0 \\
+\bottomrule
+\end{tabular}
+
 
 \section{Wnioski}
 Na podstawie przeprowadzonych eksperymentów można zauważyć, że wszystkie trzy parametry ($\alpha$, $\gamma$ i $\epsilon$) mają istotny wpływ na zbieżność algorytmu Q-Learning. 
