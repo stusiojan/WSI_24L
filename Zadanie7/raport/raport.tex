@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\title{Zadanie 7 - Raport}
+\author{Jan Stusio}
+\date{Czerwiec 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Wstęp}
+
+Celem zadania jest implementacja klasyfikatora Gaussowskiego Naiwnego Bayesa oraz wnioskowanie dla tego klasyfikatora oraz uczenie parametrów. 
+Klasyfikator ten zakłada brak zależności między zmiennymi objaśniającymi oraz że wartości atrybutów pochodzą z rozkładu normalnego. 
+Zadanie polegało również na porównaniu wyników tego klasyfikatora z klasyfikatorem drzewa decyzyjnego oraz SVM z zadania 4 dla najlepszych parametrów.
+
+\section{Implementacja}
+
+Klasa \texttt{GaussianNB} posiada metody \texttt{fit} oraz \texttt{predict}. 
+Metoda \texttt{fit} uczy parametry klasyfikatora, natomiast metoda \texttt{predict} dokonuje klasyfikacji. 
+
+Metody są wywoływane przez \texttt{cross\_val\_score} z biblioteki \texttt{sklearn}, która przeprowadza walidację krzyżową z 5 podziałami, aby ocenić wydajność modelu.
+
+\section{Wyniki}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{lrrrrrrrr}
+        \toprule
+        Model & Accuracy & Accuracy ± & Precision & Precision ± & Recall & Recall ± & F1 & F1 ± \\
+        \midrule
+        Gaussian Naive Bayes & 0.953333 & 0.026667 & 0.958384 & 0.023983 & 0.953333 & 0.026667 & 0.953047 & 0.026862 \\
+        Decision Tree & 0.953333 & 0.033993 & 0.968350 & 0.035671 & 0.960000 & 0.032660 & 0.966583 & 0.036606 \\
+        SVM & 0.980000 & 0.016330 & 0.981818 & 0.014845 & 0.980000 & 0.016330 & 0.979950 & 0.016371 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Porównanie wyników klasyfikatorów na zbiorze danych Iris}
+\end{table}
+
+
+\section{Wnioski}
+
+Na podstawie przeprowadzonej analizy oraz uzyskanych wyników można sformułować następujące wnioski:
+
+\begin{itemize}
+    \item Klasyfikator Gaussowskiego Naiwnego Bayesa osiągnął wysoką dokładność klasyfikacji (95.33\%) na zbiorze danych Iris. 
+    Jest to wynik porównywalny z klasyfikatorem drzewa decyzyjnego (95.33\%), jednak nieco gorszy niż klasyfikator SVM (98.00\%).
+    
+    \item Wartości odchylenia standardowego dla wszystkich miar jakości klasyfikacji (Accuracy, Precision, Recall, F1) są niewielkie (wszystkie poniżej 0,04),
+    co wskazuje na stabilność i powtarzalność wyników uzyskiwanych przez klasyfikator.
+    
+    \item Gaussowski Naiwny Bayes, pomimo swoich uproszczonych założeń dotyczących niezależności zmiennych objaśniających, 
+    okazał się być porównywalny do bardziej zaawansowanych metod klasyfikacji (badanych w zadaniu 4).
+    
+    \item Implementacja Gaussowskiego Naiwnego Bayesa nie wymaga strojenia hiperparametrów, więc może być szybszy do implementacjiś od SVM i drzewa decyzyjnego.
+\end{itemize}
+
+Gaussowski Naiwny Bayes jest klasyfikatorem niewiele gorszym od SVM i drzewa decyzyjnego, więc dostarcza w miarę dokładne wyniki klasyfikacji. 
+
+\end{document}
